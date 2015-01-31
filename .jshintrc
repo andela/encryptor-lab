@@ -1,0 +1,17 @@
+{
+  "node": true,
+  "strict": true,
+  "eqeqeq": true,
+  "globals": {
+    "describe": true,
+    "it": true,
+    "expect": true,
+    "compute": true,
+    "AndeLabs": true,
+    "Firebase": true,
+    "angular": true
+  },
+  "browser": true,
+  "camelcase": true,
+  "curly": true
+}

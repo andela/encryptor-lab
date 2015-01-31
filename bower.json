@@ -1,0 +1,39 @@
+{
+  "name": "accumulate-lab",
+  "version": "0.0.0",
+  "homepage": "https://github.com/andela/accumulator-lab",
+  "authors": [
+    "andela-ioraelosi"
+  ],
+  "description": "Lab exercise",
+  "keywords": [
+    "labs",
+    "javascript",
+    "arrays"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.11",
+    "angular-animate": "~1.3.11",
+    "angular-aria": "~1.3.11",
+    "angular-material": "~0.7.1",
+    "firebase": "~2.1.2",
+    "hammerjs": "~2.0.4",
+    "jquery": "~2.1.3",
+    "lodash": "~3.0.1"
+  },
+  "overrides": {
+    "BOWER-PACKAGE": {
+
+    }
+  }
+}

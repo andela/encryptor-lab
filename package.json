@@ -1,0 +1,9 @@
+{
+  "name": "Andelabs-Accumulate",
+  "description": "Create an accumulate function that acts like the `map` funciton in Javascript",
+  "version": "0.0.1",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "main-bower-files": "^2.5.0"
+  }
+}
