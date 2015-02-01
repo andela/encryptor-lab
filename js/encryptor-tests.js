@@ -54,15 +54,18 @@ describe('Encryptor: ', function() {
     });
 
     it('throws an error when the encrypt method is called without any arguments', function () {
-      expect(function () { this.encryptor.encrypt(); }).toThrow(new Error('Please supply the string to be encrypted.'));
+      var self = this;
+      expect(function () { self.encryptor.encrypt(); }).toThrow(new Error('Please supply the string to be encrypted.'));
     });
 
     it('throws an error when the encrypt method is called with an empty string', function () {
-      expect(function () { this.encryptor.encrypt(''); }).toThrow(new Error('The source string must not be empty.'));
+      var self = this;
+      expect(function () { self.encryptor.encrypt(''); }).toThrow(new Error('The source string must not be empty.'));
     });
 
     it('throws an error when the encrypt method is called with input that is not a string.', function () {
-      expect(function () { this.encrypt.encrypt(4); }).toThrow(new Error('The source argument must be a string.'));
+      var self = this;
+      expect(function () { self.encryptor.encrypt(4); }).toThrow(new Error('The source argument must be a string.'));
     });
 
   });
