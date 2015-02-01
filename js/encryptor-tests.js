@@ -6,7 +6,7 @@ describe('Encryptor: ', function() {
 
     beforeEach(function () {
       this.Encryptor = Encryptor;
-      this.encryptor = new this.Encryptor();
+      this.encryptor = new this.Encryptor(13);
     });
 
     afterEach(function () {
@@ -16,6 +16,18 @@ describe('Encryptor: ', function() {
 
     it('the encryptor should be an instanceof the Encryptor class.', function () {
       expect(this.encryptor instanceof Encryptor).toBe(true);
+    });
+
+    it('the encryptor should have a coefficient.', function () {
+      expect(this.encryptor.coefficient).toBeDefined();
+    });
+
+    it('the coefficient should be a number', function () {
+      expect(typeof this.encryptor.coefficient).toBe('number');
+    });
+
+    it('each encryptor instance should have a different coefficient.', function () {
+      expect(this.Encryptor.prototype.coefficient).not.toBeDefined();
     });
 
     it('the encrypt method should be defined', function () {
@@ -28,5 +40,73 @@ describe('Encryptor: ', function() {
     });
 
   });
+
+  describe('Case for invalid input: ', function () {
+
+    beforeEach(function () {
+      this.Encryptor = Encryptor;
+      this.encryptor = new this.Encryptor(13);
+    });
+
+    afterEach(function () {
+      this.Encryptor = undefined;
+      this.encryptor = undefined;
+    });
+
+    it('throws an error when the encrypt method is called without any arguments', function () {
+      expect(function () { this.encryptor.encrypt(); }).toThrow(new Error('Please supply the string to be encrypted.'));
+    });
+
+    it('throws an error when the encrypt method is called with an empty string', function () {
+      expect(function () { this.encryptor.encrypt(''); }).toThrow(new Error('The source string must not be empty.'));
+    });
+
+    it('throws an error when the encrypt method is called with input that is not a string.', function () {
+      expect(function () { this.encrypt.encrypt(4); }).toThrow(new Error('The source argument must be a string.'));
+    });
+
+  });
+
+  describe('Case for single characters.', function () {
+
+    beforeEach(function () {
+      this.Encryptor = Encryptor;
+      this.encryptor = new this.Encryptor(13);
+    });
+
+    afterEach(function () {
+      this.Encryptor = undefined;
+      this.encryptor = undefined;
+    });
+
+    it('should return "n" for "a".', function () {
+      expect(this.encryptor.encrypt("a")).toBe("n");
+    });
+
+    it('should return "n" for "A".', function () {
+      expect(this.encryptor.encrypt("A")).toBe("n");
+    });
+
+    it('should return "m" for "z".', function () {
+      expect(this.encryptor.encrypt("z")).toBe("m");
+    });
+
+    it('should return "s" for "F".', function () {
+      expect(this.encryptor.encrypt("F")).toBe("s");
+    });
+
+    it('should return "f" for "A" for another encryptor defined by "new Encryptor(5)"', function () {
+      var secondEncryptor = new this.Encryptor(5);
+      expect(secondEncryptor.encrypt("A")).toBe("f");
+    });
+
+    it('should return "f" for "A" for another encryptor defined by "new Encryptor(135)"', function () {
+      var thirdEncryptor = new this.Encryptor(135);
+      expect(thirdEncryptor.encrypt("A")).toBe("f");
+    });
+
+  });
+
+
 
 });
