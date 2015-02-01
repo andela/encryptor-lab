@@ -67,7 +67,7 @@ describe('Encryptor: ', function() {
 
   });
 
-  describe('Case for single characters.', function () {
+  describe('Case for single-character strings.', function () {
 
     beforeEach(function () {
       this.Encryptor = Encryptor;
@@ -107,6 +107,41 @@ describe('Encryptor: ', function() {
 
   });
 
+  describe('Case for multi-character strings.', function () {
 
+    beforeEach(function () {
+      this.Encryptor = Encryptor;
+      this.encryptor = new this.Encryptor(13);
+    });
+
+    afterEach(function () {
+      this.Encryptor = undefined;
+      this.encryptor = undefined;
+    });
+
+    it('should return "uryyb" for "hello".', function () {
+      expect(this.encryptor.encrypt("hello")).toBe("uryyb");
+    });
+
+    it('should return "uryyb" for "HELLO".', function () {
+      expect(this.encryptor.encrypt("HELLO")).toBe("uryyb");
+    });
+
+    it('should return "mjqqt" for "HELLO" for another encryptor defined by "new Encryptor(5)"', function () {
+      var secondEncryptor = new this.Encryptor(5);
+      expect(secondEncryptor.encrypt("HELLO")).toBe("mjqqt");
+    });
+
+    it('should return "zwddg" for "HELLO" for another encryptor defined by "new Encryptor(200)"', function () {
+      var secondEncryptor = new this.Encryptor(200);
+      expect(secondEncryptor.encrypt("HELLO")).toBe("zwddg");
+    });
+
+    it('should return "gdkkn" for "HELLO" for another encryptor defined by "new Encryptor(-1)"', function () {
+      var secondEncryptor = new this.Encryptor(-1);
+      expect(secondEncryptor.encrypt("HELLO")).toBe("gdkkn");
+    });
+
+  });
 
 });
